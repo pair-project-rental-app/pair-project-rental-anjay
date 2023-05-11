@@ -13,6 +13,7 @@ router.post("/login", Controller.checkLogin)// halaman login
 
 router.use(function(req,res,next) {
     console.log(req.session.UserId);
+    console.log(req.session.role);
     if(!req.session.UserId) {
         eror = "please login first"
         res.redirect(`/login?error=${eror}`)
@@ -24,7 +25,7 @@ router.use(function(req,res,next) {
 router.get("/details/:dressId")// halaman show details 
 
 router.get("/profile", Controller.profileForm)// halaman profile
-router.post("/profile")// halaman profile post
+router.post("/profile", Controller.createProfile)// halaman profile post
 
 router.get("/checkout/:dressId")// halaman utama
 router.get("/logout", Controller.userLogout)
@@ -32,7 +33,7 @@ router.get("/logout", Controller.userLogout)
 router.use(function(req,res,next) {
     if(req.session.role === "User" || !req.session.role) {
         const eror = "must be an admin to passed"
-        res.redirect(`/?error=`)
+        res.redirect(`/?error=${eror}`)
     } else {
         next()
     }
@@ -40,6 +41,6 @@ router.use(function(req,res,next) {
 
 router.get("/admin", Controller.adminOnly) // khusus admin
 
-router.get("/user/delete/:id") // delete user 
+router.get("/delete/:id", Controller.deleteUser) // delete user 
 
 module.exports = router

@@ -18,7 +18,16 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     gender: DataTypes.STRING,
     address: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    UserId:  {
+      type : DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+
+    }
   }, {
     sequelize,
     modelName: 'Profile',
