@@ -1,13 +1,16 @@
 <%- include('partial/_nav') %>
+<%= JSON.stringify(data) %>
+<% data.forEach(el => { %>
 
 <div class="card" style="width: 18rem;">
-    <img src="https://cdn.shopify.com/s/files/1/0011/9783/4252/products/20_375a8763-f5d7-4184-a352-4523ef713733.jpg?v=1576267132" class="card-img-top" alt="...">
+    <img src="<%= el.imageUrl %>" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title"><%= el.name %></h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <a href="/details" class="btn btn-outline-info">Rent Now</a>
     </div>
   </div>
+  <% }) %>
 
   <img src="https://cdn.shopify.com/s/files/1/0011/9783/4252/products/20_375a8763-f5d7-4184-a352-4523ef713733.jpg?v=1576267132" class="img-fluid" alt="...">
   <h3>Name:</h3>

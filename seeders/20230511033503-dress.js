@@ -15,6 +15,7 @@ module.exports = {
     */
    let insertData = JSON.parse(fs.readFileSync("./data.json", "utf-8"))
    insertData.forEach(el => {
+    delete el.UserId
     el.createdAt = el.updatedAt = new Date()
    });
    return queryInterface.bulkInsert("Dresses", insertData, {})

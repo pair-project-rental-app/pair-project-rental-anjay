@@ -1,19 +1,16 @@
-const {User} = require("../models/")
+const {User, Dress} = require("../models/")
 
 class Controller{
-    static home(req, res){
-        res.render("home")
-    }
-
-    static register(req, res){
-        res.render("loginRegister")
-    }
-
-    static login(req, res){
-        const {userName, email, password, role} = req.body
-        User.create()
+    static showHome(req, res){
+        Dress.findAll()
         .then((data)=>{
-            
+            res.render("home", {data})
+        })
+        .catch((err)=>{
+            console.log(err);
+            res.send(err)
         })
     }
 }
+
+module.exports = Controller

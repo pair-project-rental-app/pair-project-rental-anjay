@@ -11,20 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here\
-      Rental.hasMany(models.User)
-      Rental.hasMany(models.Dress)
+      Rental.belongsTo(models.User)
+      Rental.belongsTo(models.Dress)
     }
   }
   Rental.init({
-    UserId: DataTypes.INTEGER,
-    references: {
-      model: 'Users',
-      key: 'id'
+    UserId: {
+      type : DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
     },
-    DressId: DataTypes.INTEGER,
-    references: {
-      model: 'Dresses',
-      key: 'id'
+    DressId: {
+      type : DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
     }
   }, {
     sequelize,

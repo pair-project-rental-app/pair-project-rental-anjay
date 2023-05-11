@@ -1,7 +1,8 @@
 const express = require('express')
+const Controller = require('../controller/controller')
 const router = express.Router()
 
-router.get("/")// halaman utama
+router.get("/", Controller.showHome)// halaman utama
 
 router.get("/register")// halaman register
 
@@ -15,8 +16,6 @@ const isLogin = function(req,res,next) {
         next()
     }
 }
-
-
 
 router.get("/details/:dressId")// halaman show details 
 
@@ -37,3 +36,4 @@ router.get("/admin") // khusus admin
 
 router.get("/user/delete/:id") // delete user 
 
+module.exports = router
