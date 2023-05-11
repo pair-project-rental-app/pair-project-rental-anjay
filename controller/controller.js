@@ -1,8 +1,9 @@
-const {User, Dress} = require("../models/")
+const {User, Dress, Profile} = require("../models/")
 const bcrypt = require("bcryptjs")
 
 class Controller{
     static showHome(req, res){
+        // console.log(req.session);
         Dress.findAll()
         .then((data)=>{
             res.render("home", {data})
@@ -18,7 +19,7 @@ class Controller{
     }
 
     static addUser(req, res){
-        console.log(req.body);
+        // console.log(req.body);
         const {userName, password, email, role} = req.body
         User.create({userName, password, email, role})
         .then(() => res.redirect("/"))
@@ -39,6 +40,8 @@ class Controller{
                 const isValid = bcrypt.compareSync(password, user.password )
                 // console.log(isValid);
                 if(isValid) {
+                    req.session.UserId = user.id
+                    req.session.role = user.role
                     return res.redirect("/")
                 } else{
                     const eror = "your password is incorect"
@@ -50,6 +53,26 @@ class Controller{
             }
         })
         .catch((err) => res.send(err))
+    }
+
+    static userLogout(req, res){
+        req.session.destroy((err) => {
+            if(err) {
+                res.send(err);
+            } else{
+                res.redirect("/login")
+            }
+        })
+    }
+
+    static adminOnly(req, res){
+        User.findAll({include: Profile})
+        .then((data) => res.render("adminOnly", {data}))
+        .catch((err) => res.send(err))
+    }
+
+    static profileForm(req, res){
+        res.render("formProfile")
     }
 }
 

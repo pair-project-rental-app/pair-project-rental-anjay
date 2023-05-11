@@ -8,32 +8,37 @@ router.get("/register", Controller.showRegister)// halaman register
 
 router.post("/register", Controller.addUser)// halaman login 
 router.get("/login", Controller.showLogin)// halaman login 
+
 router.post("/login", Controller.checkLogin)// halaman login 
 
-const isLogin = function(req,res,next) {
+router.use(function(req,res,next) {
+    console.log(req.session.UserId);
     if(!req.session.UserId) {
-        res.redirect(`/login-register?warning=Pleaseloginfirst`)
+        eror = "please login first"
+        res.redirect(`/login?error=${eror}`)
     } else {
         next()
     }
-}
+})
 
 router.get("/details/:dressId")// halaman show details 
 
-router.get("/profile")// halaman profile
+router.get("/profile", Controller.profileForm)// halaman profile
 router.post("/profile")// halaman profile post
 
 router.get("/checkout/:dressId")// halaman utama
+router.get("/logout", Controller.userLogout)
 
-const isAdmin = function(req,res,next) {
-    if(!req.session.role) {
-        res.redirect(`/?warning=Mustbeadmintoenter`)
+router.use(function(req,res,next) {
+    if(req.session.role === "User" || !req.session.role) {
+        const eror = "must be an admin to passed"
+        res.redirect(`/?error=`)
     } else {
         next()
     }
-}
+})
 
-router.get("/admin") // khusus admin
+router.get("/admin", Controller.adminOnly) // khusus admin
 
 router.get("/user/delete/:id") // delete user 
 
