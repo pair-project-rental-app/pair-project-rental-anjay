@@ -4,10 +4,11 @@ const router = express.Router()
 
 router.get("/", Controller.showHome)// halaman utama
 
-router.get("/register")// halaman register
+router.get("/register", Controller.showRegister)// halaman register
 
-router.post("/register")// halaman login 
-router.post("/login")// halaman login 
+router.post("/register", Controller.addUser)// halaman login 
+router.get("/login", Controller.showLogin)// halaman login 
+router.post("/login", Controller.checkLogin)// halaman login 
 
 const isLogin = function(req,res,next) {
     if(!req.session.UserId) {
