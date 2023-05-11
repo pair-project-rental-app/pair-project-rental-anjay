@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Yellow One set",
+        "description": "Miu-miu one set fendi",
+        "imageUrl": "https://assets.vogue.com/photos/6345c35fe3f1f2641c986c33/master/w_2580%2Cc_limit/00020-miu-miu-spring-2023-ready.jpeg",
+        "color": "yellow",
+        "price": 80000,
+        "userId": ""
+    },
+    {
+        "name": "Green Flower Dress",
+        "description": "Balenciaga, seasons of The Real Housewives of Beverly Hills",
+        "imageUrl": "https://assets.vogue.com/photos/6345c79beb489f503840d982/master/w_2580%2Cc_limit/00042-richard-quinn-spring-2023.jpeg",
+        "color": "green",
+        "price": 100000,
+        "userId": ""
+    },
+    {
+        "name": "Twotwinstyle Kasual",
+        "description": "Ruched Gaun Wanita V Leher Puff Lengan Setengah Tinggi Pinggang Gaun Mini untuk Wanita",
+        "imageUrl": "https://i.pinimg.com/564x/7d/56/92/7d5692908564e7d201678786a3338374.jpg",
+        "color": "red",
+        "price": 500000,
+        "userId": ""
+    },
+    {
+        "name": "Wedding Dress",
+        "description": "All our dresses are handmade to order from high quality European fabric",
+        "imageUrl": "https://i.pinimg.com/564x/02/b4/ec/02b4ec2e79766a6c73ed3bde35f7e4cd.jpg",
+        "color": "yellow",
+        "price": 30000,
+        "userId": ""
+    },
+    {
+        "name": "Slide Heels",
+        "description": "These Slide Heels are another creation from Kobi Levi. His blog states that they are made from leather. But they must have some other material for the slide heel",
+        "imageUrl": "https://img.allw.mn/content/fashion/2013/06/7_slide-heels_488x365.jpg",
+        "color": "yellow",
+        "price": 80000,
+        "userId": ""
+    }
+]
