@@ -1,0 +1,18 @@
+<%- include('partial/_link') %>
+<%- include('partial/_nav') %>
+<div class="container d-flex justify-content-center text-center">
+
+    <div style="width: 50%;">
+    
+        <img src="<%= data.imageUrl %>"
+            class="img-fluid" alt="...">
+            <div class="text-start">
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:30px;"><%= data.name %>
+                </p>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:30px;"><%= data.color %></p>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:30px;"><%= data.description %></p>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:30px;"><%= formatted(data.price) %></p>
+            </div>
+            <a href="/checkout" type="button" class="btn btn-success">Add to Cart</a>
+    </div>
+</div>

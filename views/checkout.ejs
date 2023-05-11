@@ -1,0 +1,73 @@
+<!-- 
+<form action="/pay" method="post" id="payment-form">
+    <div class="form-group">
+      <label for="card-element">Kartu Kredit</label>
+      <div id="card-element"></div>
+    </div>
+    <button type="submit">Bayar</button>
+  </form>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const stripe = Stripe('sk_test_51N6UasFLzsQC3EpIhhIKuzuGeYAus2x9aw5qcbdByfhRkKgeuGi2q9bTHEQQtEkgt83YNaQ0fOck4mqRYbFI1xa400BsszsvWE');
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+  
+    const form = document
+   -->
+<!DOCTYPE html>
+<html lang="en">
+<title>Document</title>
+<script src="https://js.stripe.com/v3/"></script>
+
+<body>
+    <h3>welcome to payment gateaway</h3>
+
+    <form action="/charge" method="post" id="payment-form">
+        <div class="form-row">
+          <label for="card-element">
+            Credit or debit card
+          </label>
+          <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+          </div>
+      
+          <!-- Used to display Element errors. -->
+          <div id="card-errors" role="alert"></div>
+        </div>
+      
+        <button>Submit Payment</button>
+      </form>
+</body>
+<script>
+     const stripe = Stripe("pk_test_51N6UasFLzsQC3EpIWidVrZY0jk5zBsnSGgBVRa8LVx0MKO6SKc5fqGSKDE0jybib0QUn8vMD5DQxuUjIuun3BNqi00U54EcPDa")
+ const elements = stripe.elements();
+ const style = {
+  base: {
+    // Add your base input styles here. For example:
+    fontSize: '16px',
+    color: '#32325d',
+  },
+};
+ const card = elements.create('card', {style});
+ card.mount('#card-element');
+ // Create a token or display an error when the form is submitted.
+const form = document.getElementById('payment-form');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+    console.log("sesuatu");
+  const {token, error} = await stripe.createToken(card);
+
+  if (error) {
+    // Inform the customer that there was an error.
+    const errorElement = document.getElementById('card-errors');
+    errorElement.textContent = error.message;
+  } else {
+    // Send the token to your server.
+    stripeTokenHandler(token);
+  }
+});
+</script>
+</html>
+
+<h1>haii</h1>

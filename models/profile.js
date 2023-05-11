@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Profile.belongsTo(models.User)
     }
+    get formatName() {
+      return this.gender === 'Male' ? `Mr. ${this.name}` : `Ms. ${this.name}`//user nya include profile nanti panggil getter profile nya
+    }
   }
   Profile.init({
     name: DataTypes.STRING,

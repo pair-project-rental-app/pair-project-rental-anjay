@@ -17,12 +17,21 @@ const isLogin = function(req,res,next) {
     }
 }
 
-router.get("/details/:dressId")// halaman show details 
 
 router.get("/profile")// halaman profile
 router.post("/profile")// halaman profile post
 
-router.get("/checkout/:dressId")// halaman utama
+
+// router.get("/pay", )
+
+
+router.get('/checkout',Controller.checkout)
+
+router.get('/checkout/:id', Controller.postFormCheckout)
+
+router.get("/details/:dressId", Controller.showDetail)// halaman show details
+ 
+// router.get("/checkout/:dressId", Controller.checkOut)// halaman utama
 
 const isAdmin = function(req,res,next) {
     if(!req.session.role) {

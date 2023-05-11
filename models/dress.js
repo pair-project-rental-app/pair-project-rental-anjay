@@ -13,12 +13,35 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Dress.hasMany(models.Rental)
     }
+    static getPrice(priceNow){
+      console.log(priceNow);
+      // if(priceNow){
+      //     // option.where.order =  [price, "ASC"]
+      //     return Dress.findAll({
+      //       order: [[this.price, priceNow ]]
+      //     });
+      // }
+      let order = [["price", "DESC"]];
+      if (priceNow === "DESC"|| !priceNow) {
+        console.log("test masuk desc");
+        return Dress.findAll({
+          order: order
+        });
+      }else if(priceNow === "ASC"|| !priceNow){
+        order = [["price", "ASC"]];
+        console.log("test masuk asc");
+        return Dress.findAll({
+          order: order
+        });
+      }
+    }
   }
   Dress.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
-    price: DataTypes.INTEGER
+    price: DataTypes.INTEGER,
+    color: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Dress',

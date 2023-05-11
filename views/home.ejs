@@ -1,19 +1,21 @@
 <%- include('partial/_nav') %>
-<%= JSON.stringify(data) %>
-<% data.forEach(el => { %>
 
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+  <a href="/?priceNow=ASC">
+    <button type="button" class="btn btn-outline-primary">Low Price</button>
+  </a>
+  <a href="/?priceNow=DESC">
+    <button type="button" class="btn btn-outline-primary">High Price</button>
+  </a>
+</div>
+<% data.forEach(el => { %>
 <div class="card" style="width: 18rem;">
     <img src="<%= el.imageUrl %>" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%= el.name %></h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="/details" class="btn btn-outline-info">Rent Now</a>
+      <p class="card-text"><%= el.description %></p>
+      <a href="/details/<%= el.id %>" class="btn btn-outline-info">Rent Now</a>
     </div>
   </div>
   <% }) %>
-
-  <img src="https://cdn.shopify.com/s/files/1/0011/9783/4252/products/20_375a8763-f5d7-4184-a352-4523ef713733.jpg?v=1576267132" class="img-fluid" alt="...">
-  <h3>Name:</h3>
-  <h3>Color:</h3>
-  <h3>Size:</h3>
 <%- include('partial/_link') %>

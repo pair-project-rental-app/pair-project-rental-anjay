@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Rental)
 
     }
+    
   }
   User.init({
     userName: {
